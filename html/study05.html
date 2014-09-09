@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <style>
+
+  </style>
+</head>
+<body>
+<script type="text/x-handlebars" data-template-name="application">
+	{{#link-to "index" tagName="button" class="btn btn-primary" addClass=true}}Home{{/link-to}}<!--use attributeBindings set true -->
+		{{#link-to "products" tagName="button" class="btn btn-primary"
+		addClass="true"}}Products{{/link-to}}
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+	<P>{{#if ifCheck}}
+	value:{{ifValue}}
+	{{else}}
+	value: else-value
+	{{/if}}
+	</P>
+
+	<p>
+	{{#unless unlessCheck}}
+	value: {{unlessValue}}
+	{{else}}
+	value: else-value
+	{{/unless}}
+	</p>
+
+	<P>
+	{{#each eachValue}}
+	{{id}}
+	{{else}}
+	value: else-value
+	{{/each}}
+	</P>
+
+	<p>
+	{{#each one in person }}<!--this way can use name-->
+	outName:{{name}} inName:{{one.name}}<br/>
+	{{/each}}
+	</p>
+
+	<p>id:{{dog.id}} name:{{dog.name}} age:{{dog.age}}</p>
+
+	{{#with dog}}<P>id:{{id}} name{{name}} age:{{age}}</P>{{/with}}
+	
+	<P>
+	{{#with dog as haha}}
+		{{#each pp in person}}
+			out:{{name}}
+			dog:{{haha.name}} 
+			person: {{pp.name}}<br/>
+		{{/each}}
+	{{/with}}
+	</P>
+	
+	<P>
+	<img {{bind-attr src="img"}}/>
+	<img {{bind-attr src=img}}/>
+	</P>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="products">
+	{{input newClass1="true" newClass2=true newClass3=newclass}}
+	<!--newClas-->
+	{{textarea newClass1="true" newClass2=true}}
+	<!--newClass can not work in textarea-->
+	{{#if isExpanded}}
+	<button type="button" class="btn btn-default" {{action "contract"}}>Contract</button>
+	{{else}}
+	<button type="button" class="btn btn-default" {{action "expand"}}>Show more</button>
+	{{/if}}
+		{{#if isShow}}
+		it is show now
+	<button type="button" class="btn btn-default" {{action "hidden"}}>hidden</button>
+	{{else}}
+	<button type="button" class="btn btn-default" {{action "show"}}>show</button>
+	{{/if}}
+</script>
+
+<script src="../js/libs/jquery-1.10.2.js"></script>
+<script src="../js/libs/moment.js"></script>
+<script src="../js/libs/showdown.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/libs/handlebars-1.1.2.js"></script>
+<script src="../js/libs/ember-1.7.0.js"></script>
+<script src="../js/libs/ember-data.js"></script>
+<script src="../js/study05.js"></script>
+</body>
+</html>

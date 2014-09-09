@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  	.container{
+  		padding-top: 100px;
+  	}
+  	.col-xs-6{
+      margin: 0 auto;
+  		text-align: center;
+  	}
+    .tab-content{
+      padding-top: 50px;
+    }
+  </style>
+</head>
+<body>
+<script type="text/x-handlebars">
+  <div class="cow">
+  	<div class="container">
+      <ul class="nav nav-pills">
+  	    <li class="col-xs-3 active">
+          <a href="#home" data-toggle="tab">Home</a>		
+  	    </li>
+  	    <li class="col-xs-3">
+          <a href="#edit" data-toggle="tab">Edit</a>	
+  	    </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="home">
+          {{partial "tab/home"}}
+        </div>
+        <div class="tab-pane" id="edit">
+          {{partial "tab/edit"}}
+        </div>
+
+      </div>
+  	</div>	
+  </div>	
+</script>
+
+
+<!--tab content-->
+<script type="text/x-handlebars" id="tab/home">
+  <div class="list-group col-xs-2 col-xs-offset-1">
+    <li class="list-group-item">{{#link-to "list-num"}}list-num{{/link-to}}</li>
+    <li class="list-group-item">{{#link-to "button"}}button{{/link-to}}</li>
+  </div>
+  <div class="col-xs-5 pull-right">
+    {{outlet}}
+  </div>
+</script>
+
+<script type="text/x-handlebars" id="tab/edit">
+  {{#if isVisible}}
+   <div class="btn btn-primary" {{action "unVisible"}}>
+     edit
+   </div>
+  {{else}}
+  {{partial "areatext"}}
+  <div class="btn btn-primary" {{action "beVisible"}}>
+    done
+  </div>
+  {{/if}}
+</script>
+
+
+
+<!--home-->
+<script type="text/x-handlebars" id="list-num">
+  <div class="btn-group dropdown">
+    <button type="button" class="btn btn-default">Default</button>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header">top1</li>
+        <li><a href="">default</a></li>
+        <li class="divider"></li>
+        <li class="dropdown-header" this>top2</li>
+        <li><a href="">primary</a></li>
+    </ul>
+  </div>
+
+</script>
+
+<script type="text/x-handlebars" id="button">
+ <ul>
+   {{#each items in model}}
+     <li>{{items.name}}</li>
+   {{/each}}
+ </ul>
+</script>
+
+<script type="text/x-handlebars" id="areatext">
+  <textarea placeholder="this is a areatext"></textarea>
+</script>
+
+<script src="../js/libs/jquery-1.10.2.js"></script>
+<script src="../js/libs/moment.js"></script>
+<script src="../js/libs/showdown.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/libs/handlebars-1.1.2.js"></script>
+<script src="../js/libs/ember-1.7.0.js"></script>
+<script src="../js/libs/ember-data.js"></script>
+<script src="./App/001radioPage.js"></script>
+
+</body>
+</html>

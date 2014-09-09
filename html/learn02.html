@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <style>
+
+  </style>
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name="application">
+<div class="navbar">
+{{#link-to "index" class="navbar-brand"}}Homepage{{/link-to}}
+{{#link-to "about" class="navbar-brand"}}About{{/link-to}}
+{{#link-to "products" class="navbar-brand"}}Products{{/link-to}}
+</div>
+<div class="container">
+  {{outlet}}
+</div>
+<footer class="container"></footer>
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+<img {{bind-attr src="logo"}} alt="log"/>
+<h1>Welcome to The Flint&Flame</h1>
+<p>There are {{productsCount}}</p>
+<p>Rendered on {{time}}</p>
+</script>
+
+<script type="text/x-handlebars" data-template-name="about">
+<h1>Anout The Fire Spirits</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="products">
+<h1>Products</h1>
+<ul class="list-unstyled col-md-8">
+{{#each}} 
+ 	<li class="row">
+ 		<img {{bind-attr src="image"}} class="img-thumbnail col-md-5"/>
+ 		<div class="col-md-7">
+ 		  {{#link-to "product" this className="list-group-item"}}<!--return a array,must give a dynamic url,here is :title,use this.title -->
+ 			  {{title}}   <!--this according to model:return;decide ":title"-->
+ 			{{/link-to}}
+ 			<p>{{description}}</p>
+ 			<p><button class="btn btn-success">Buy for ${{price}}</button></p>
+ 		</div>
+ 	</li>
+{{/each}} 
+</ul>
+</script>
+
+<script type='text/x-handlebars' data-template-name='product'> 
+ <div class='row'>
+ <div class='col-md-7'>
+ <h2>{{title}}</h2>
+ <h3 class='text-success'>${{price}}</h3>
+ <p class='text-muted'>{{description}}</p>
+ </div>
+<div class='col-md-5'>
+ <img {{bind-attr src='image'}} class='img-thumbnail img-rounded'/>
+</div>
+ </div>
+</script>
+
+
+<script src="../js/libs/jquery-1.10.2.js"></script>
+<script src="../js/libs/moment.js"></script>
+<script src="../js/libs/showdown.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/libs/handlebars-1.1.2.js"></script>
+<script src="../js/libs/ember-1.7.0.js"></script>
+<script src="../js/libs/ember-data.js"></script>
+<script src="../js/learn02.js"></script>
+</body>
+</html>

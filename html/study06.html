@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <style>
+
+  </style>
+</head>
+<body>
+<script type="text/x-handlebars" data-template-name="application">
+	{{#link-to "index" tagName="button" class="btn btn-primary"}}Home{{/link-to}}
+		{{#link-to "products" tagName="button" class="btn btn-primary"
+	}}Products{{/link-to}}
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+	<button type="button" {{action "select" post}} class="btn btn-default">select</button>
+	{{post.title}}<!-- use action to pass params-->
+
+	<button type="button" {{action "select" post on="mouseDown"}} class="btn btn-default">select</button>
+	{{post.title}}<!-- add on-->
+{{partial "index"}}<!--use partial,not need another -->
+</script>
+
+<script type="text/x-handlebars" data-template-name="_index">
+	{{#link-to "products" bubbles=false}}Products
+	<button {{action close}}>✗</button>
+	{{/link-to}}
+
+	{{#link-to "products"}}Products
+	<button {{action close bubbles=false}}>✗</button>
+	{{/link-to}}<!-- set bubbles-->
+</script>
+
+<script type="text/x-handlebars" data-template-name="products">
+	{{log "Name is" name}}<!-- use log to helper-->
+	{{view App.MakeView}}<!-- use view , compare with partial-->
+</script>
+
+<script type="text/x-handlebars" data-template-name="make">
+	{{view.title}}
+</script>
+
+
+<script src="../js/libs/jquery-1.10.2.js"></script>
+<script src="../js/libs/moment.js"></script>
+<script src="../js/libs/showdown.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/libs/handlebars-1.1.2.js"></script>
+<script src="../js/libs/ember-1.7.0.js"></script>
+<script src="../js/libs/ember-data.js"></script>
+<script src="../js/study06.js"></script>
+</body>
+</html>
