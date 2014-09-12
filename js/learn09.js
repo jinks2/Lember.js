@@ -57,21 +57,23 @@ App.ProductsOnsaleRoute = Em.Route.extend({
 });
 
 App.ProductView = Em.View.extend({ 
-  classNames: ["row"], //binding class named 'row';
-  classNameBindings: ["isOnSale"],//set isOnSale binding classname in product,if true,binding class named "isOsale"
+  classNames: ["row"], 
+  classNameBindings: ["isOnSale"],
   isOnSale: Em.computed.alias("controller.isOnSale")
-  //views can access the model through the controller,
-  //there must same name for three places;
 });
-//you'd better use view to function instead of create property 
 
 App.ProductDetailsComponent = Em.Component.extend({
-  reviewsCount: Em.computed.alias("product.reviews.length"),//product get form "product = this"
+  reviewsCount: Em.computed.alias("product.reviews.length"),
   hasReviews: function() {
     return this.get("reviewsCount") > 0;
   }.property("reviewsCount"),
   tagName: "li",
-  classNames: ["row"] //if {{product-details}} use same tagName or class,can use this way
+  classNames: ["row"] 
+});
+
+App.ReviewsController = Em.ArrayController.extend({
+  sortProperties: ["reviewedAt"],
+  sortAscending: false
 });
 
 App.ApplicationAdapter = DS.FixtureAdapter.extend();

@@ -41,7 +41,7 @@ App.ApplicationAdapter = DS.FixtureAdapter.extend();
  //To load records from memory;
 
 App.Product = DS.Model.extend({
-  title: DS.attr('string'), 
+  title: DS.attr('string'),  //attr must registe in here
   price: DS.attr('number'), 
   description: DS.attr('string'), 
   isOnSale: DS.attr('boolean'), 

@@ -29,7 +29,8 @@
 <p>Rendered on {{time}}</p>
 <ul class="list-unstyled">
 {{#each onSale}}
-  {{product-details product=this}}
+  {{product-details product=this classNames="row" tagName="li"}}
+  <!--set this in index == product, return to components/product-details-->
 {{/each}}
 </ul>
 </script>
@@ -62,16 +63,17 @@
 <script type="text/x-handlebars" data-template-name="products/onsale">
   <ul class="list-unstyled">
   {{#each}}
-    {{product-details product=this}}
-  {{/each}}
+    {{product-details product=this tagName="li" class="row"}} 
+    <!-- can not set this=product-->
+  {{/each}} //muse use '-'
   </ul>
 </script>
 
-<script type="text/x-handlebars" data-template-name="components/product-details">
+<script type="text/x-handlebars" data-template-name="components/product-details"><!--set the same details in here-->
   <div class='col-sm-5'>
     <img {{bind-attr src='product.image'}} class='img-thumbnail col-sm-5'/>
     <div class='col-sm-7'>
-      <h2>{{product.title}}</h2>
+      <h2>{{product.title}}</h2> <!--get return this-->
       <span class="label label-warning">
         {{#link-to "products.onsale"}}On Sale{{/link-to}}
       </span>
@@ -79,7 +81,7 @@
       {{#if hasReviews}}
         <P class="text-muted">Read all reviews ({{reviewsCount}}).</P>
       {{/if}}
-      <p>{{#link-to "product" this.product class="btn btn-success"}}
+      <p>{{#link-to "product" this.product class="btn btn-success"}}<!-- changr "this" to "this.product"-->
         Buy for ${{product.price}}
         {{/link-to}}
       </p>
@@ -93,36 +95,22 @@
     <h2>{{title}}</h2>
     <h3 class='text-success'>${{price}}</h3>
     <p class='text-muted'>{{description}}</p>
-    {{render "reviews" reviews}}
-    <div>
-      <h3>Review {{title}}</h3>
-      {{#if text}}
-      <p class="text-muted">{{text}}</p>
-      {{/if}}
-      {{textarea valueBinding="text"}}
-      <p>
-        <button type="button" {{action "createReview"}} class="btn-primary">Review</button>
-      <p>
-    </div>
+    <h3>Reviews</h3>
+    <ul>
+      {{#each reviews}}
+      <li>{{text}}</li>
+      {{else}}
+      <li>
+        <p class='text-muted'>
+          <em>No reviews yet. Be the first to write one!</em>
+        </p></li>
+      {{/each}} 
+    </ul>
   </div>
   <div class='col-md-5'>
     <img {{bind-attr src='image'}} class='img-thumbnail img-rounded'/>
   </div>
 </div>
-</script>
-
-<script type="text/x-handlebars" data-template-name="reviews">
-  <h3>Reviews</h3>
-  <ul>
-    {{#each}}
-    <li>{{text}}</li>
-    {{else}}
-    <li>
-      <p class='text-muted'>
-        <em>No reviews yet. Be the first to write one!</em>
-      </p></li>
-    {{/each}} 
-  </ul>
 </script>
 
 
@@ -133,6 +121,6 @@
 <script src="../js/libs/handlebars-1.1.2.js"></script>
 <script src="../js/libs/ember-1.7.0.js"></script>
 <script src="../js/libs/ember-data.js"></script>
-<script src="../js/learn10.js"></script>
+<script src="../js/learn07.js"></script>
 </body>
 </html>

@@ -40,7 +40,7 @@
  	<li class="row">
  		<img {{bind-attr src="image"}} class="img-thumbnail col-md-5"/>
  		<div class="col-md-7">
- 		  {{#link-to "product" this className="list-group-item"}}<!--return a array,must give a dynamic url,here is :title,use this.title -->
+ 		  {{#link-to "product" this class="list-group-item"}}<!--return a array,must give a dynamic url,here is :title,use this.title -->
  			  {{title}}   <!--this according to model:return;decide ":title"-->
  			{{/link-to}}
  			<p>{{description}}</p>

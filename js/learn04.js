@@ -66,6 +66,7 @@ App.Product.FIXTURES = [
   	description: "Easily…",
   	isOnSale: false, 
   	image: "../img/product2.png"
+    //actually here are:   reviews:[]
   } 
 ]; 
 

@@ -58,7 +58,7 @@ App.ProductsOnsaleRoute = Em.Route.extend({
 
 App.ProductController = Em.ObjectController.extend({ //use ObjectController
   text: "",
-  actions: {
+  actions: { //here not need property()
     createReview: function() {
       // Step 1: Build a new Review object
       var review = this.store.createRecord("review", { //you can touch the server here

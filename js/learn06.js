@@ -54,7 +54,7 @@ App.ProductsController = Em.ArrayController.extend({
 App.ProductsOnsaleRoute = Em.Route.extend({ //name
   model: function() {
     return this.modelFor("products").filterBy("isOnSale");
-  }
+  }  //you can use modelBy;
 });//use this way;it can get sll products from the parent route
 
 
